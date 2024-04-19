@@ -14,14 +14,16 @@ public class Panel : MonoBehaviour
     {
         Quit.SetActive(false);
         Panel1.SetActive(false);
-        
-     
-      
+       
+
+
     }
 
    
     void Update()
     {
+     
+            
         
     }
 
@@ -52,7 +54,9 @@ public class Panel : MonoBehaviour
 
     public void SoundOn()
     {
+    
         AudioListener.volume = 1;
+        
 
     }
 

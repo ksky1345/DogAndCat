@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GooglePlayGames;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     public static int score;
-    public int SaveScore;
+    public  int SaveScore;
     public Text TextHt;
    // public GameObject Panel1;
     //public GameObject GameTimeS;
@@ -27,33 +28,43 @@ public class ScoreManager : MonoBehaviour
     {
 
        
-         if (PlayerPrefs.GetInt("HighScore") == 0) //최고기록 0점일때
+         if ( PlayerPrefs.GetInt("HighScore") == 0) //최고기록 0점일때
          {
 
              PlayerPrefs.SetInt("HighScore", score);
-             SaveScore = PlayerPrefs.GetInt("HighScore");
+             SaveScore =  PlayerPrefs.GetInt("HighScore");
              PlayerPrefs.Save();
-             Debug.Log(PlayerPrefs.GetInt("HighScore"));
+             Debug.Log( PlayerPrefs.GetInt("HighScore"));
+            ReportScore();
 
-         }
-         else if (PlayerPrefs.GetInt("HighScore") < score) //최고기록 넘었을때
+        }
+         else if ( PlayerPrefs.GetInt("HighScore") < score) //최고기록 넘었을때
          {
              PlayerPrefs.SetInt("HighScore", score);
              SaveScore = PlayerPrefs.GetInt("HighScore");
-             PlayerPrefs.Save();
+            PlayerPrefs.Save();
              Debug.Log(PlayerPrefs.GetInt("HighScore"));
+            ReportScore();
          }
-         else if (PlayerPrefs.GetInt("HighScore") > score) //최고기록 못넘었을때
+         else if ( PlayerPrefs.GetInt("HighScore") > score) //최고기록 못넘었을때
          {
 
-             SaveScore = PlayerPrefs.GetInt("HighScore");
-             Debug.Log(PlayerPrefs.GetInt("HighScore"));
+             SaveScore =  PlayerPrefs.GetInt("HighScore");
+             Debug.Log( PlayerPrefs.GetInt("HighScore"));
 
          }
 
 
          TextHt.text = (PlayerPrefs.GetInt("HighScore")).ToString("0") + "점";
-        
+
+        void ReportScore()
+        {
+
+            Social.ReportScore(SaveScore, GPGSIds.leaderboard, success => {
+
+            });
+        }
+
         //PlayerPrefs.DeleteAll();
     }
    

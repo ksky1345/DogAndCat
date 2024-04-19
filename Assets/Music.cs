@@ -13,9 +13,9 @@ public class Music : MonoBehaviour
 
     public void Sound()
     {
-        AudioListener.volume = 1;
+        AudioListener.volume = 1.0f;
     }
-    // Update is called once per frame
+   
     void Update()
     {
         

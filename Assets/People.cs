@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using GooglePlayGames;
+using UnityEngine.UI;
 
 public class People : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class People : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Social.ReportProgress(GPGSIds.achievement__, 100, (bool success) => { });
     }
 
     public void ChangeGameScene()
